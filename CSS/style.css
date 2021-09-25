@@ -1,0 +1,35 @@
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-right: 200px;
+    padding-left:  200px;
+}
+
+button {
+    color: black;
+    background-color: azure;
+    border-radius: 5px;
+    font-family: sans-serif;
+    width: 270px;
+    height: 180px;
+    margin-right: 5px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.RPS-options {
+    margin-bottom: 100px; 
+}
+
+
+.computer-score, .player-score {
+    width: 430px;
+    display: flex;
+    justify-content: center;
+    font-size: larger;
+    
+}
+.results {
+    display:  flex;
+}

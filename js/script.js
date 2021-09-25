@@ -35,7 +35,7 @@ function game() {
     let playerScore   = 0;
     for (let i = 0; i < roundNumber; i++) 
     {
-        currentSelection = prompt("Please enter your RPS choice");
+        //currentSelection = prompt("Please enter your RPS choice");
         output =playRound(currentSelection, computerPlay());
         console.log(output);
         if (output.includes("win")) {
@@ -43,11 +43,15 @@ function game() {
         } else if (output.includes("lose")) {
             computerScore += 1
         } 
-        console.log("Current player score " + playerScore);
-        console.log("Current computer score " + computerScore);
+        //console.log("Current player score " + playerScore);
+        //console.log("Current computer score " + computerScore);
         }
     }
    
 
 
 game()
+
+function updateScore(e) {
+    const 
+}
