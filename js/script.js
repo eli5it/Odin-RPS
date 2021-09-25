@@ -1,5 +1,13 @@
+let computerScore = 0;
+let playerScore   = 0;
+const playerContent = document.querySelector('.span-player'); // dynamic text boxes that updates with score
+const compContent   = document.querySelector('.span-comp');
+
+
+
+
 function computerPlay()  {
-    let val = Math.random() * 3 ;
+    let val = Math.random() * 3 ;       // equal probability of R/P/S
     if (val < 1) {
         return 'rock'
     } else if ( val < 2) {
@@ -10,48 +18,51 @@ function computerPlay()  {
 }
 
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
     
-    playerSelection = playerSelection.toLowerCase();
-    console.log(computerSelection)
-    if (playerSelection == computerSelection) {
-        return "You tied! " 
-    } else if (playerSelection ==     'rock' && computerSelection  == 'paper' 
+    let computerSelection = computerPlay();
+    if (playerSelection ==     'rock' && computerSelection  == 'paper' 
             || playerSelection ==    'paper' && computerSelection  == 'scissors'  
             || playerSelection == 'scissors' && computerSelection  == 'rock'){
-        return "You lose, " + playerSelection + " beats " + computerSelection + "."
-    } else if (computerSelection ==     'rock' && playerSelection  == 'paper' 
+        computerScore += 1;
+    } else if  (computerSelection ==     'rock' && playerSelection  == 'paper' 
             || computerSelection ==    'paper' && playerSelection  == 'scissors'  
-            || computerSelection == 'scissors' && playerSelection  == 'rock') {
-        return "You win, " + playerSelection + " beats " + computerSelection + "."
-            }
-      else {return "Please enter a valid word"}
+            || computerSelection == 'scissors' && playerSelection  == 'rock') 
+            { playerScore += 1;
+    }
+    updateContent();
+    if (playerScore >= 5 || computerScore >= 5 ) {announceWinner()}
 
 }
 
-function game() {
-    let roundNumber = 5;
-    let computerScore = 0;
-    let playerScore   = 0;
-    for (let i = 0; i < roundNumber; i++) 
-    {
-        //currentSelection = prompt("Please enter your RPS choice");
-        output =playRound(currentSelection, computerPlay());
-        console.log(output);
-        if (output.includes("win")) {
-            playerScore += 1
-        } else if (output.includes("lose")) {
-            computerScore += 1
-        } 
-        //console.log("Current player score " + playerScore);
-        //console.log("Current computer score " + computerScore);
-        }
+
+
+
+function updateContent() {
+    playerContent.textContent= playerScore;
+    compContent.textContent= computerScore;
+
+
+}
+
+function announceWinner() {
+    if (playerScore > computerScore) {
+        alert("Congrats you won!")
+    } else {
+        alert("Better luck next time buddy")
     }
+
+}
+
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => button.addEventListener('click', () => {    // on each click from the user, the playRound function is initiated
+    let playerSelection;
+    playerSelection = button.id;
+    playRound(playerSelection);
+    
+     }));
+      
+
    
 
-
-game()
-
-function updateScore(e) {
-    const 
-}
